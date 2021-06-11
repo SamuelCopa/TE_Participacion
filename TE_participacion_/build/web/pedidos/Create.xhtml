@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePedidosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePedidosLabel_idped}" for="idped" />
+                    <h:inputText id="idped" value="#{pedidosController.selected.idped}" title="#{bundle.CreatePedidosTitle_idped}" required="true" requiredMessage="#{bundle.CreatePedidosRequiredMessage_idped}"/>
+                    <h:outputLabel value="#{bundle.CreatePedidosLabel_idprov}" for="idprov" />
+                    <h:inputText id="idprov" value="#{pedidosController.selected.idprov}" title="#{bundle.CreatePedidosTitle_idprov}" required="true" requiredMessage="#{bundle.CreatePedidosRequiredMessage_idprov}"/>
+                    <h:outputLabel value="#{bundle.CreatePedidosLabel_idemp}" for="idemp" />
+                    <h:inputText id="idemp" value="#{pedidosController.selected.idemp}" title="#{bundle.CreatePedidosTitle_idemp}" required="true" requiredMessage="#{bundle.CreatePedidosRequiredMessage_idemp}"/>
+                    <h:outputLabel value="#{bundle.CreatePedidosLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{pedidosController.selected.fecha}" title="#{bundle.CreatePedidosTitle_fecha}" required="true" requiredMessage="#{bundle.CreatePedidosRequiredMessage_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pedidosController.create}" value="#{bundle.CreatePedidosSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pedidosController.prepareList}" value="#{bundle.CreatePedidosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePedidosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
